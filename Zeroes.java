@@ -1,37 +1,77 @@
-import java.util.LinkedList;
 import java.util.Scanner;
-public class Zeroes{
-    public static LinkedList<Integer> reverseLinkedList(LinkedList<Integer> llist)
-    {
-        LinkedList<Integer> revLinkedList = new LinkedList<Integer>();
-        for (int i = llist.size() - 1; i >= 0; i--) {
- 
-            revLinkedList.add(llist.get(i));
-        }
-        return revLinkedList;
+class Node {
+    int data;
+    Node next;
+
+    Node(int data, Node next) {
+        this.data = data;
+        this.next = next;
     }
-  public static void main(String[] args) {
-    LinkedList<Integer> num = new LinkedList<Integer>();
-    Scanner sc =  new Scanner(System.in);
-    int n,count=0;
-    n = sc.nextInt();
-    while(n>0){
-        int temp = n%10;
-        if(temp==0){
-            count++;
+}
+
+class LinkedList {
+    // function to move all zeros to end
+    public static void moveZeros(Node head) {
+        Node curr = head;
+        Node zeroPtr = null;
+
+        while (curr != null && curr.data != 0) {
+            curr = curr.next;
         }
-        else{
-            num.add(temp);
+        zeroPtr = curr;
+
+        // if no zeros found, return
+        if (zeroPtr == null) {
+            return;
         }
-        n=n/10;
-    }
-    num = reverseLinkedList(num);
-    for(int i=0;i<count;i++)
-    {
-        num.add(0);
+
+        // move all zeros to the end
+        while (curr != null) {
+            if (curr.data != 0) {
+                zeroPtr.data = curr.data;
+                curr.data = 0;
+                zeroPtr = zeroPtr.next;
+            }
+            curr = curr.next;
+        }
     }
 
-    System.out.println(num);
-    sc.close();
-  }
+    // function to print linked list
+    public static void printList(Node head) {
+        while (head != null) {
+            System.out.print(head.data);
+            head = head.next;
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        Node head = null;
+        Node tail = null;
+
+        // read input number as string
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        String input = sc.nextLine();
+
+        // create linked list from input number
+        for (char c : input.toCharArray()) {
+            int digit = c - '0';
+            Node newNode = new Node(digit, null);
+            if (head == null) {
+                head = newNode;
+                tail = newNode;
+            } else {
+                tail.next = newNode;
+                tail = newNode;
+            }
+        }
+
+        // move zeros to end
+        moveZeros(head);
+
+        System.out.print("After Moving zeroes to end : ");
+        printList(head);
+        sc.close();
+    }
 }

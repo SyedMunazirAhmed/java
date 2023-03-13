@@ -30,7 +30,7 @@ public class Duplicate {
             arr[i] = sc.nextInt();
             }
         int[] uniqueArr = removeDuplicates(arr);
-        System.out.println(Arrays.toString(uniqueArr));
+        System.out.println(Arrays.toString(uniqueArr)); 
         sc.close();
     }
 }

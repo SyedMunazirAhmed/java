@@ -6,6 +6,7 @@ public class Merge{
         mergedList.addAll(list1);
         mergedList.addAll(list2);
         Collections.sort(mergedList);
+
         return mergedList;
     }
 
