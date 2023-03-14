@@ -38,18 +38,7 @@ public class Merge{
         mergedList.addAll(list2);
         // Collections.sort(mergedList); //Using built-in Function
         int n = mergedList.size();
-        //Using Bubble Sort
-        // for (int i = 0; i < n - 1; i++) {
-        //     for (int j = 0; j < n - i - 1; j++) {
-        //         if (mergedList.get(j) > mergedList.get(j + 1)) {
-        //             // swap elements at index j and j+1
-        //             int temp = mergedList.get(j);
-        //             mergedList.set(j, mergedList.get(j + 1));
-        //             mergedList.set(j + 1, temp);
-        //         }
-        //     }
-        // }
-
+        
         //Using quickSort..
         quickSort(mergedList, 0, n - 1);
         return mergedList;
