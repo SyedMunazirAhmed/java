@@ -37,9 +37,9 @@ public class Merge{
         mergedList.addAll(list1);
         mergedList.addAll(list2);
         // Collections.sort(mergedList); //Using built-in Function
+
+        //Using quick sort
         int n = mergedList.size();
-        
-        //Using quickSort..
         quickSort(mergedList, 0, n - 1);
         return mergedList;
     }
